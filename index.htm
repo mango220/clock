@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 200px;
+            height: 200px;
+            border: 2px solid;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .dec {
+            width: 20px;
+            height: 20px;
+            background-color: greenyellow;
+            border-radius: 50%;
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*top: 0;*/
+            /*right: 0;*/
+            /*bottom: 0;*/
+            /*margin: auto;*/
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /*margin-left: -10px;*/
+            /*margin-top: -10px;*/
+            transform: translate(-50%, -50%);
+            z-index: 9;
+        }
+
+        .h {
+            width: 6px;
+            height: 30px;
+            background: #444444;
+            position: absolute;
+            left: 97px;
+            top: 70px;
+            transform-origin: center bottom;
+        }
+
+        .m {
+            width: 4px;
+            height: 50px;
+            background: #25a2f1;
+            position: absolute;
+            left: 98px;
+            top: 50px;
+            transform-origin: center bottom;
+        }
+
+        .s {
+            width: 2px;
+            height: 70px;
+            background-color: orangered;
+            position: absolute;
+            left: 99px;
+            top: 30px;
+            transform-origin: center bottom;
+        }
+
+        li {
+            list-style: none;
+            width: 4px;
+            height: 10px;
+            background-color: black;
+            position: absolute;
+            left: 98px;
+            transform-origin: center 100px;
+        }
+
+        li:nth-of-type(5n) {
+            height: 15px;
+        }
+
+        /*li:nth-of-type(1){*/
+        /*    transform: rotate(6deg);*/
+        /*}*/
+        /*li:nth-of-type(2){*/
+        /*    transform: rotate(12deg);*/
+        /*}*/
+
+        /*li:nth-of-type(3){*/
+        /*    transform: rotate(18deg);*/
+        /*}*/
+
+
+    </style>
+</head>
+<body>
+
+<div class="wrap">
+    <div class="dec"></div>
+    <div class="h"></div>
+    <div class="m"></div>
+    <div class="s"></div>
+    <ul>
+    </ul>
+</div>
+
+<script>
+  var styleStr = ""
+  for (var i = 0; i < 60; i++) {
+    var li = document.createElement("li")
+    document.querySelector("ul").appendChild(li)
+    // li.style.transform = "rotate("+(i+1)*6+"deg)"
+    styleStr += "li:nth-of-type(" + (i + 1) + "){transform: rotate(" + (i + 1) * 6 + "deg);}"
+  }
+  document.querySelector("style").innerHTML += styleStr
+
+  //获取时间
+  var date = new Date()
+  var h = date.getHours()
+  var m = date.getMinutes()
+  var s = date.getSeconds()
+  document.querySelector(".h").style.transform = "rotate(" + 30 * (h + m / 60 + s / 3600) + "deg)"
+  document.querySelector(".m").style.transform = "rotate(" + 6 * (m + s / 60) + "deg)"
+  document.querySelector(".s").style.transform = "rotate(" + 6 * s + "deg)"
+
+
+ setInterval(function () {
+   //获取时间
+   var date = new Date()
+   var h = date.getHours()
+   var m = date.getMinutes()
+   var s = date.getSeconds()
+   document.querySelector(".h").style.transform = "rotate(" + 30 * (h + m / 60 + s / 3600) + "deg)"
+   document.querySelector(".m").style.transform = "rotate(" + 6 * (m + s / 60) + "deg)"
+   document.querySelector(".s").style.transform = "rotate(" + 6 * s + "deg)"
+ },1000)
+
+</script>
+
+
+</body>
+</html>
